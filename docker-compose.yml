@@ -19,8 +19,6 @@ services:
       timeout: 5s
       retries: 3
       start_period: 60s
-    networks:
-      - net
 
   luna:
     image: jumpserver/luna:${VERSION}
@@ -35,8 +33,6 @@ services:
       timeout: 5s
       retries: 3
       start_period: 10s
-    networks:
-      - net
 
   lina:
     image: jumpserver/lina:${VERSION}
@@ -51,8 +47,7 @@ services:
       timeout: 5s
       retries: 3
       start_period: 10s
-    networks:
-      - net
+
 
   guacamole:
     image: jumpserver/guacamole:${VERSION}
@@ -71,5 +66,8 @@ services:
       timeout: 5s
       retries: 3
       start_period: 10s
-    networks:
-      - net
+      
+networks:
+  default:
+    name: ${APP_NETWORK}
+    external: true
